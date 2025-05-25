@@ -1,0 +1,256 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "Tech Conference 2025",
+      "description": "We\u2019ll get you directly seated and inside for you to enjoy the conference.",
+      "longDescription": "Explore the future of AI, blockchain, and cloud computing with keynotes, demos, and networking.",
+      "date": "2025-04-14",
+      "day": "Sunday",
+      "time": "15:00\u201317:00",
+      "location": "Uttara, Dhaka",
+      "tags": [
+        "Tech",
+        "Conference",
+        "AI"
+      ],
+      "image": "https://cdn-cjhkj.nitrocdn.com/krXSsXVqwzhduXLVuGLToUwHLNnSxUxO/assets/images/optimized/rev-a4983f2/spotme.com/wp-content/uploads/2021/07/SMMW2019-team.png",
+      "totalSeats": 100,
+      "registered": 80,
+      "availableSeats": 20,
+      "bookingLimitPerUser": 4,
+      "isUpcoming": true
+    },
+    {
+      "id": "2",
+      "title": "AI & ML Expo 2025",
+      "description": "Explore cutting-edge trends in Artificial Intelligence and Machine Learning.",
+      "longDescription": "Speakers and companies sharing advances in generative AI, computer vision, NLP, and more.",
+      "date": "2025-06-10",
+      "day": "Tuesday",
+      "time": "10:00\u201316:00",
+      "location": "Online",
+      "tags": [
+        "AI",
+        "ML",
+        "Tech"
+      ],
+      "image": "/images/ai-ml.jpg",
+      "totalSeats": 300,
+      "registered": 100,
+      "availableSeats": 200,
+      "bookingLimitPerUser": 2,
+      "isUpcoming": true
+    },
+    {
+      "id": "3",
+      "title": "UX Design Sprint",
+      "description": "A hands-on workshop sprinting through UX & UI design principles.",
+      "longDescription": "1-day immersive sprint to build modern UI collaboratively.",
+      "date": "2025-05-22",
+      "day": "Thursday",
+      "time": "09:00\u201318:00",
+      "location": "New York, NY",
+      "tags": [
+        "UX",
+        "Design",
+        "Workshop"
+      ],
+      "image": "/images/ux-sprint.jpg",
+      "totalSeats": 60,
+      "registered": 52,
+      "availableSeats": 8,
+      "bookingLimitPerUser": 2,
+      "isUpcoming": true
+    },
+    {
+      "id": "4",
+      "title": "Cybersecurity Summit",
+      "description": "Stay ahead of the latest cybersecurity threats and defenses.",
+      "longDescription": "Workshops and panels from white-hat hackers and top security firms.",
+      "date": "2025-07-12",
+      "day": "Saturday",
+      "time": "09:00\u201317:00",
+      "location": "Las Vegas, NV",
+      "tags": [
+        "Cybersecurity",
+        "Tech",
+        "Security"
+      ],
+      "image": "/images/cybersec.jpg",
+      "totalSeats": 200,
+      "registered": 180,
+      "availableSeats": 20,
+      "bookingLimitPerUser": 4,
+      "isUpcoming": true
+    },
+    {
+      "id": "5",
+      "title": "Cloud Connect Conference",
+      "description": "Cloud-native architectures, scaling, and DevOps.",
+      "longDescription": "Join architects from AWS, Azure, and GCP discussing multi-cloud setups.",
+      "date": "2025-09-10",
+      "day": "Wednesday",
+      "time": "11:00\u201316:00",
+      "location": "Seattle, WA",
+      "tags": [
+        "Cloud",
+        "DevOps",
+        "Infrastructure"
+      ],
+      "image": "/images/cloud.jpg",
+      "totalSeats": 150,
+      "registered": 90,
+      "availableSeats": 60,
+      "bookingLimitPerUser": 2,
+      "isUpcoming": true
+    },
+    {
+      "id": "6",
+      "title": "Frontend Fusion",
+      "description": "Dive into the future of frontend frameworks and tools.",
+      "longDescription": "Talks and workshops from maintainers of React, Vue, Svelte, and more.",
+      "date": "2025-08-01",
+      "day": "Friday",
+      "time": "10:00\u201316:00",
+      "location": "Remote",
+      "tags": [
+        "Frontend",
+        "Design",
+        "Development"
+      ],
+      "image": "/images/frontend.jpg",
+      "totalSeats": 250,
+      "registered": 230,
+      "availableSeats": 20,
+      "bookingLimitPerUser": 2,
+      "isUpcoming": true
+    },
+    {
+      "id": "7",
+      "title": "Robotics Lab Demo Day",
+      "description": "Showcasing innovations in robotics and automation.",
+      "longDescription": "Demo day for startups building smart robots and automation systems.",
+      "date": "2025-11-04",
+      "day": "Tuesday",
+      "time": "13:00\u201317:00",
+      "location": "Boston, MA",
+      "tags": [
+        "Robotics",
+        "AI",
+        "Engineering"
+      ],
+      "image": "/images/robotics.jpg",
+      "totalSeats": 80,
+      "registered": 40,
+      "availableSeats": 40,
+      "bookingLimitPerUser": 3,
+      "isUpcoming": true
+    },
+    {
+      "id": "8",
+      "title": "NextGen Developer Meetup",
+      "description": "Networking and future tech for next-gen developers.",
+      "longDescription": "Meet other developers and mentors to explore the tools and platforms of tomorrow.",
+      "date": "2025-10-20",
+      "day": "Monday",
+      "time": "16:00\u201319:00",
+      "location": "Chicago, IL",
+      "tags": [
+        "Tech",
+        "Networking",
+        "Students"
+      ],
+      "image": "/images/nextgen.jpg",
+      "totalSeats": 100,
+      "registered": 67,
+      "availableSeats": 33,
+      "bookingLimitPerUser": 3,
+      "isUpcoming": true
+    },
+    {
+      "id": "9",
+      "title": "Indie Music Fest",
+      "description": "Enjoy live indie music from top bands in an outdoor setup.",
+      "longDescription": "Bands, food trucks, and campfire music under the stars.",
+      "date": "2024-12-01",
+      "day": "Friday",
+      "time": "18:00\u201323:00",
+      "location": "Austin, TX",
+      "tags": [
+        "Music",
+        "Festival",
+        "Outdoor"
+      ],
+      "image": "/images/music-fest.jpg",
+      "totalSeats": 500,
+      "registered": 500,
+      "availableSeats": 0,
+      "bookingLimitPerUser": 4,
+      "isUpcoming": false
+    },
+    {
+      "id": "10",
+      "title": "Startup Meetup 2024",
+      "description": "Founders and investors come together to network and share ideas.",
+      "longDescription": "Pitch sessions and collaborative workshops for tech startups.",
+      "date": "2024-10-05",
+      "day": "Saturday",
+      "time": "11:00\u201314:00",
+      "location": "Los Angeles, CA",
+      "tags": [
+        "Startup",
+        "Business",
+        "Networking"
+      ],
+      "image": "/images/startup-meetup.jpg",
+      "totalSeats": 150,
+      "registered": 143,
+      "availableSeats": 7,
+      "bookingLimitPerUser": 3,
+      "isUpcoming": false
+    },
+    {
+      "id": "11",
+      "title": "Blockchain Summit 2023",
+      "description": "Discussing the state and future of decentralized technologies.",
+      "longDescription": "Talks from Ethereum, Polygon, and Solana ecosystem teams.",
+      "date": "2023-11-15",
+      "day": "Wednesday",
+      "time": "10:00\u201315:00",
+      "location": "Miami, FL",
+      "tags": [
+        "Blockchain",
+        "Finance",
+        "Tech"
+      ],
+      "image": "/images/blockchain.jpg",
+      "totalSeats": 300,
+      "registered": 300,
+      "availableSeats": 0,
+      "bookingLimitPerUser": 2,
+      "isUpcoming": false
+    },
+    {
+      "id": "12",
+      "title": "Data Science Day",
+      "description": "A day dedicated to models, stats, and data visualizations.",
+      "longDescription": "Hands-on learning from top Kaggle competitors and researchers.",
+      "date": "2024-02-20",
+      "day": "Tuesday",
+      "time": "09:00\u201317:00",
+      "location": "Toronto, Canada",
+      "tags": [
+        "Data",
+        "Science",
+        "Analytics"
+      ],
+      "image": "/images/datasci.jpg",
+      "totalSeats": 120,
+      "registered": 110,
+      "availableSeats": 10,
+      "bookingLimitPerUser": 2,
+      "isUpcoming": false
+    }
+  ]
+}
