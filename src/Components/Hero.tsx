@@ -13,20 +13,44 @@ const Hero = () => {
             />
             <img
                 src="images/Ellipse 740.png"
-                alt="Ellipse 3"
-                className="absolute top-[50%] left-0 w-screen opacity-70 z-0 pointer-events-none"
-            />
+                        alt="Ellipse 3"
+                        className="absolute top-[50%] left-0 w-screen opacity-70 z-0 pointer-events-none"
+                    />
 
-            {/* Large Bright Decorative Stars - Lower Side of Circles */}
-            <div className="absolute top-[58%] left-[5%] z-0 animate-pulse pointer-events-none">
-                <svg width="40" height="40" fill="#ffffffee" xmlns="http://www.w3.org/2000/svg "  >
-                    <path d="M20 0l5 15h15l-12.5 9L32.5 40 20 30l-12.5 10L17.5 24 5 15h15z" />
-                </svg>
+            {/* LEFT Star */}
+            <div className="absolute top-[30%] md:top-[58%] left-[5%] z-0 animate-pulse pointer-events-none">
+              <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <g fill="white" fillOpacity="0.9">
+                  <path
+                    d="
+                      M60 38
+                      C60 50, 68 60, 82 60
+                      C68 60, 60 72, 60 82
+                      C60 72, 52 60, 38 60
+                      C52 60, 60 50, 60 38Z"
+                  />
+                  <rect x="59.25" y="0" width="1.5" height="120" className='opacity-50'/>
+                  <rect x="0" y="59.25" width="120" height="1.5" className='opacity-50' />
+                </g>
+              </svg>
             </div>
-            <div className="absolute top-[58%] right-[5%] z-0 animate-pulse pointer-events-none">
-                <svg width="40" height="40" fill="#ffffffee" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 0l5 15h15l-12.5 9L32.5 40 20 30l-12.5 10L17.5 24 5 15h15z" />
-                </svg>
+        
+            {/* RIGHT Star */}
+            <div className="absolute top-[30%] md:top-[58%] right-[5%] z-0 animate-pulse pointer-events-none">
+              <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <g fill="white" fillOpacity="0.9">
+                  <path
+                    d="
+                      M60 38
+                      C60 50, 68 60, 82 60
+                      C68 60, 60 72, 60 82
+                      C60 72, 52 60, 38 60
+                      C52 60, 60 50, 60 38Z"
+                  />
+                  <rect x="59.25" y="0" width="1.5" height="120" className='opacity-50'/>
+                  <rect x="0" y="59.25" width="120" height="1.5" className='opacity-50' />
+                </g>
+              </svg>
             </div>
 
             {/* Hero Title */}
