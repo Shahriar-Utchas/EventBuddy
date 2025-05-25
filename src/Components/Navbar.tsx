@@ -11,9 +11,10 @@ const Navbar = () => {
     <nav className="bg-white shadow-sm px-6 py-4">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Left: Logo */}
+        <Link href="/">
         <div className="flex items-center gap-2">
           <img
-            src="images/logo.png"
+            src="/images/logo.png"
             alt="logo"
             className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
           />
@@ -21,6 +22,7 @@ const Navbar = () => {
             Event buddy.
           </span>
         </div>
+        </Link>
 
         {/* Desktop Right Buttons */}
         <div className="hidden md:flex items-center gap-3">
