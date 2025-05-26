@@ -1,8 +1,10 @@
 'use client';
 
 import { Armchair } from 'lucide-react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import { useUser } from '../../context/userContext'; // ✅ Adjust path if needed
 
 type Event = {
   id: string;
@@ -24,6 +26,9 @@ type Event = {
 
 const EventDetails = () => {
   const params = useParams();
+  const router = useRouter();
+  const { user } = useUser(); // ✅ Get user context
+
   const id = params?.id as string;
   const [event, setEvent] = useState<Event | null>(null);
   const [selectedSeats, setSelectedSeats] = useState<number>(1);
@@ -38,6 +43,20 @@ const EventDetails = () => {
 
     if (id) fetchData();
   }, [id]);
+
+  const handleBooking = () => {
+    if (!user) {
+      router.push('/signin');
+      return;
+    }
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Booking Confirmed!',
+      text: `You have successfully booked ${selectedSeats} seat${selectedSeats > 1 ? 's' : ''}.`,
+      confirmButtonColor: '#5b5efc',
+    });
+  };
 
   if (!event) return <div className="text-center mt-10">Loading event...</div>;
 
@@ -73,7 +92,7 @@ const EventDetails = () => {
       {/* Title */}
       <h1 className="text-3xl font-semibold mb-6">{event.title}</h1>
 
-      {/* Date, Time, Location */}
+      {/* Info Block */}
       <div className="bg-[#f8f8ff] border border-[#e5e8f9] rounded-lg p-6 flex flex-wrap justify-between items-center text-sm text-[#2d2c3c] mb-8">
         <div className="flex items-center gap-3">
           <span className="text-[#5c5cde] text-xl">📅</span>
@@ -98,7 +117,7 @@ const EventDetails = () => {
         </div>
       </div>
 
-      {/* Select Seats */}
+      {/* Seat Selection */}
       <div className="bg-[#f8f8ff] border border-[#e5e8f9] rounded-lg p-6 mb-10">
         <p className="text-base font-semibold mb-5">Select Number of Seats</p>
         <div className="grid grid-cols-4 gap-4 mb-6">
@@ -118,38 +137,34 @@ const EventDetails = () => {
           ))}
         </div>
 
-        {/* Centered Book Button */}
+        {/* Book Button */}
         <div className="flex justify-center">
-          <button className="bg-[#5c5cde] hover:bg-[#4a4ac4] text-white px-6 py-2 rounded-md text-sm font-medium transition">
+          <button
+            onClick={handleBooking}
+            className="bg-[#5c5cde] hover:bg-[#4a4ac4] text-white px-6 py-2 rounded-md text-sm font-medium transition"
+          >
             Book {selectedSeats} {selectedSeats === 1 ? 'Seat' : 'Seats'}
           </button>
         </div>
       </div>
 
-      {/* About Section - Styled */}
-          <div className="bg-[#f8f8ff] border border-[#e5e8f9] rounded-lg px-6 py-6 mt-10">
-            <h2 className="text-lg font-semibold text-[#2d2c3c] mb-4">About this event</h2>
+      {/* About Section */}
+      <div className="bg-[#f8f8ff] border border-[#e5e8f9] rounded-lg px-6 py-6 mt-10">
+        <h2 className="text-lg font-semibold text-[#2d2c3c] mb-4">About this event</h2>
+        <p className="text-sm text-[#6c6c84] leading-relaxed mb-4">
+          {event.longDescription[0]}
+        </p>
+        <ul className="list-disc list-inside text-sm text-[#6c6c84] space-y-1">
+          {event.longDescription.slice(2, -1).map((point, index) => (
+            <li key={index}>{point.replace(/^[-•]\s*/, '')}</li>
+          ))}
+        </ul>
+        <p className="text-sm text-[#6c6c84] leading-relaxed mt-4">
+          {event.longDescription[event.longDescription.length - 1]}
+        </p>
+      </div>
 
-            {/* Show the first item as paragraph description */}
-            <p className="text-sm text-[#6c6c84] leading-relaxed mb-4">
-              {event.longDescription[0]}
-            </p>
-
-            {/* Show the key features as bullet points (excluding first and last lines) */}
-            <ul className="list-disc list-inside text-sm text-[#6c6c84] space-y-1">
-              {event.longDescription.slice(2, -1).map((point, index) => (
-                <li key={index}>{point.replace(/^[-•]\s*/, '')}</li>
-              ))}
-            </ul>
-            
-            {/* Final call-to-action sentence */}
-            <p className="text-sm text-[#6c6c84] leading-relaxed mt-4">
-              {event.longDescription[event.longDescription.length - 1]}
-            </p>
-          </div>
-
-
-      {/* Spots Left - Styled */}
+      {/* Spots Left */}
       <div className="flex items-center gap-2 text-[#5c5cde] text-sm font-medium mt-6">
         <span className="text-lg"><Armchair /></span>
         <span>{event.availableSeats} Spots Left</span>
