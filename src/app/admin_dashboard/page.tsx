@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Eye, SquarePen, Trash2 } from "lucide-react";
 import Swal from "sweetalert2";
-import { useUser } from "../context/userContext"; 
+import { useUser } from "../context/userContext";
 import Link from "next/link";
 
 type Event = {
@@ -19,11 +19,11 @@ type Event = {
 export default function AdminDashboard() {
   const [events, setEvents] = useState<Event[]>([]);
   const router = useRouter();
-  const { user, loading: userLoading } = useUser(); 
+  const { user, loading: userLoading } = useUser();
 
   // Auth check
   useEffect(() => {
-    if (userLoading) return; 
+    if (userLoading) return;
 
     if (!user) {
       router.push("/signin");
@@ -67,16 +67,7 @@ export default function AdminDashboard() {
     });
   };
 
-  const handleEdit = (id: string) => {
-    Swal.fire({
-      title: "Edit Event",
-      text: `Edit event with ID: ${id}`,
-      icon: "info",
-      confirmButtonColor: "#5b5efc",
-    });
-  };
-
-  if (userLoading || !user) {
+  if (userLoading) {
     return <div className="p-8">Loading...</div>;
   }
 
@@ -97,55 +88,57 @@ export default function AdminDashboard() {
       </div>
 
       <div className="rounded-xl border border-gray-200 bg-white shadow-sm w-full overflow-x-auto">
-        <table className="w-full text-sm text-left min-w-[600px]">
-          <thead className="bg-[#fcfcff] text-[#2c2560] border-b border-gray-200">
-            <tr>
-              <th className="px-3 py-3 font-medium">Title</th>
-              <th className="px-3 py-3 font-medium">Date</th>
-              <th className="px-3 py-3 font-medium">Location</th>
-              <th className="px-3 py-3 font-medium">Registrations</th>
-              <th className="px-3 py-3 font-medium">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {events.map((event) => (
-              <tr
-                key={event.id}
-                className="border-b border-gray-200 hover:bg-gray-50 transition"
-              >
-                <td className="px-3 py-4">{event.title}</td>
-                <td className="px-3 py-4">
-                  {new Date(event.date).toLocaleDateString("en-UK", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </td>
-                <td className="px-3 py-4">{event.location}</td>
-                <td className="px-3 py-4">
-                  {event.registered}/{event.totalSeats}
-                </td>
-                <td className="px-3 py-4">
-                  <div className="flex items-center gap-3">
-                    <Link href={`/event/${event.id}`}>
-                    <Eye className="w-4 h-4 text-[#666] hover:text-black cursor-pointer" />
-                    </Link>
-                    <Link href={`/edit_event`}>
-                    <SquarePen
-                      className="w-4 h-4 text-blue-500 hover:text-blue-700 cursor-pointer"
-                    />
-                    </Link>
-                    <Trash2
-                      className="w-4 h-4 text-red-500 hover:text-red-700 cursor-pointer"
-                      onClick={() => handleDelete(event.id)}
-                    />
-                  </div>
-                </td>
+        {events.length === 0 ? (
+          <div className="text-center text-gray-500 p-6">No events available.</div>
+        ) : (
+          <table className="w-full text-sm text-left min-w-[600px]">
+            <thead className="bg-[#fcfcff] text-[#2c2560] border-b border-gray-200">
+              <tr>
+                <th className="px-3 py-3 font-medium">Title</th>
+                <th className="px-3 py-3 font-medium">Date</th>
+                <th className="px-3 py-3 font-medium">Location</th>
+                <th className="px-3 py-3 font-medium">Registrations</th>
+                <th className="px-3 py-3 font-medium">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {events.map((event) => (
+                <tr
+                  key={event.id}
+                  className="border-b border-gray-200 hover:bg-gray-50 transition"
+                >
+                  <td className="px-3 py-4">{event.title}</td>
+                  <td className="px-3 py-4">
+                    {new Date(event.date).toLocaleDateString("en-UK", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </td>
+                  <td className="px-3 py-4">{event.location}</td>
+                  <td className="px-3 py-4">
+                    {event.registered}/{event.totalSeats}
+                  </td>
+                  <td className="px-3 py-4">
+                    <div className="flex items-center gap-3">
+                      <Link href={`/event/${event.id}`}>
+                        <Eye className="w-4 h-4 text-[#666] hover:text-black cursor-pointer" />
+                      </Link>
+                      <Link href={`/edit_event/${event.id}`}>
+                        <SquarePen className="w-4 h-4 text-blue-500 hover:text-blue-700 cursor-pointer" />
+                      </Link>
+                      <Trash2
+                        className="w-4 h-4 text-red-500 hover:text-red-700 cursor-pointer"
+                        onClick={() => handleDelete(event.id)}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

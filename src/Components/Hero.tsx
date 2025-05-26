@@ -81,7 +81,7 @@ const Hero = () => {
 
       {/* Subtitle */}
       <p className="max-w-[90%] sm:max-w-[70%] md:max-w-[60%] text-[#3d3d66] text-sm sm:text-base md:text-lg font-semibold -mt-6 z-10">
-        Find and book events that match your interests. From tech conferences to music festivals, we've got you covered.
+        Find and book events that match your interests. From tech conferences to music festivals, we&apos;ve got you covered.
       </p>
 
       {/* Search Section Title */}
