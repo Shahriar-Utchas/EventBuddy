@@ -26,7 +26,7 @@ export default function User_Dashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (userLoading) return; 
+    if (userLoading) return;
 
     if (!user) {
       router.push('/signin');
@@ -77,22 +77,22 @@ export default function User_Dashboard() {
   if (!userData) return null;
 
   return (
-    <div className="min-h-screen bg-[#f9f8ff] px-8 py-6 text-[#2e2e5e]">
-      <h1 className="text-3xl font-bold">Dashboard</h1>
+    <div className="min-h-screen bg-[#f9f8ff] px-4 sm:px-6 md:px-8 py-6 text-[#2e2e5e]">
+      <h1 className="text-2xl sm:text-3xl font-bold">Dashboard</h1>
       <p className="text-sm mt-1 text-[#7c7c9c]">
         Welcome back, {userData.name}! Here you can manage your event registrations.
       </p>
 
-      <h2 className="text-lg font-semibold mt-8 mb-4">My Registered Events</h2>
+      <h2 className="text-md sm:text-lg font-semibold mt-8 mb-4">My Registered Events</h2>
 
       {userData.events.length > 0 ? (
         userData.events.map((event) => (
           <div
             key={event.id}
-            className="flex items-center justify-between bg-white rounded-md shadow-sm border p-4 mb-4"
+            className="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-white rounded-md shadow-sm border p-4 mb-4"
           >
-            <div className="flex items-center space-x-4">
-              <div className="text-center">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0">
+              <div className="text-center sm:text-left">
                 <p className="text-xl font-semibold text-[#4d4dbf]">
                   {event.date.split(" ")[0]}
                 </p>
@@ -103,7 +103,7 @@ export default function User_Dashboard() {
 
               <div>
                 <h3 className="font-semibold text-[#2e2e5e]">{event.title}</h3>
-                <div className="flex items-center text-sm text-[#7c7c9c] space-x-4 mt-1">
+                <div className="flex flex-wrap items-center text-sm text-[#7c7c9c] gap-x-4 gap-y-1 mt-1">
                   <span>📅 {event.day}</span>
                   <span>⏰ {event.time}</span>
                   <span>📍 {event.location}</span>
@@ -111,12 +111,14 @@ export default function User_Dashboard() {
               </div>
             </div>
 
-            <button
-              onClick={() => handleCancel(event.id, event.title)}
-              className="px-4 py-2 text-white font-semibold shadow-md hover:brightness-110 transition rounded-md bg-[linear-gradient(to_bottom,_#ff7a7a_0%,_#ff4c4c_15%,_#ff4c4c_100%)]"
-            >
-              Cancel registration
-            </button>
+            <div className="mt-4 sm:mt-0">
+              <button
+                onClick={() => handleCancel(event.id, event.title)}
+                className="w-full sm:w-auto px-4 py-2 text-white font-semibold shadow-md hover:brightness-110 transition rounded-md bg-[linear-gradient(to_bottom,_#ff7a7a_0%,_#ff4c4c_15%,_#ff4c4c_100%)]"
+              >
+                Cancel registration
+              </button>
+            </div>
           </div>
         ))
       ) : (

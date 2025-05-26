@@ -125,7 +125,7 @@ export default function AdminDashboard() {
                       <Link href={`/event/${event.id}`}>
                         <Eye className="w-4 h-4 text-[#666] hover:text-black cursor-pointer" />
                       </Link>
-                      <Link href={`/edit_event/${event.id}`}>
+                      <Link href={`/edit_event`}>
                         <SquarePen className="w-4 h-4 text-blue-500 hover:text-blue-700 cursor-pointer" />
                       </Link>
                       <Trash2
