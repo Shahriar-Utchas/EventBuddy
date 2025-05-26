@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import { useRouter } from 'next/navigation';
+import { useUser } from '@/app/context/userContext'; 
 
 interface User {
   email: string;
@@ -14,6 +16,8 @@ export default function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [users, setUsers] = useState<User[]>([]);
+  const router = useRouter();
+  const { setUser } = useUser(); 
 
   useEffect(() => {
     fetch('/authData.json')
@@ -30,9 +34,14 @@ export default function Home() {
     );
 
     if (foundUser) {
-      localStorage.setItem('user', JSON.stringify(foundUser));
-      // Redirect to the home page after successful login
-      window.location.href = '/user_dashboard';
+      // localStorage.setItem('user', JSON.stringify(foundUser));
+      setUser(foundUser);
+
+      if (foundUser.role === 'admin') {
+        router.push('/admin_dashboard');
+      } else {
+        router.push('/user_dashboard');
+      }
     } else {
       const usersInfo = users
         .map(user => `Email: ${user.email}\nPassword: ${user.password}`)

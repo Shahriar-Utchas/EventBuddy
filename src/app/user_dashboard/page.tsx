@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useUser } from "../context/userContext"; 
 
 type Event = {
   id: number;
@@ -19,27 +20,27 @@ type UserData = {
 
 export default function User_Dashboard() {
   const router = useRouter();
+  const { user } = useUser(); // ⬅️ use context
   const [userData, setUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
-
     if (!user) {
-      router.push('/signin');
-    } else {
-      fetch("/userData.json")
-        .then((res) => res.json())
-        .then((data: UserData) => {
-          setUserData(data);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error("Failed to load user data:", err);
-          setLoading(false);
-        });
+      router.push('/signin'); // ⬅️ redirect if not logged in
+      return;
     }
-  }, [router]);
+
+    fetch("/userData.json")
+      .then((res) => res.json())
+      .then((data: UserData) => {
+        setUserData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load user data:", err);
+        setLoading(false);
+      });
+  }, [user, router]);
 
   if (loading) return <div className="p-8">Loading...</div>;
   if (!userData) return null;

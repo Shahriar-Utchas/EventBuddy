@@ -1,8 +1,10 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Eye, SquarePen, Trash2 } from "lucide-react";
 import Swal from "sweetalert2";
+import { useUser } from "../context/userContext"; // adjust the path as needed
 
 type Event = {
   id: string;
@@ -16,33 +18,25 @@ type Event = {
 export default function AdminDashboard() {
   const [events, setEvents] = useState<Event[]>([]);
   const router = useRouter();
+  const { user } = useUser(); // ⬅️ Access user from context
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-
-    try {
-      if (!storedUser) {
-        router.push("/signin");
-        return;
-      }
-
-      const user = JSON.parse(storedUser);
-
-      if (!user || user.role !== "admin") {
-        Swal.fire({
-          icon: "error",
-          title: "Unauthorized",
-          text: "You do not have permission to access the admin dashboard.",
-          confirmButtonColor: "#5b5efc",
-        }).then(() => {
-          router.push("/");
-        });
-        return;
-      }
-    } catch (err) {
+    if (!user) {
       router.push("/signin");
+      return;
     }
-  }, [router]);
+
+    if (user.role !== "admin") {
+      Swal.fire({
+        icon: "error",
+        title: "Unauthorized",
+        text: "You do not have permission to access the admin dashboard.",
+        confirmButtonColor: "#5b5efc",
+      }).then(() => {
+        router.push("/");
+      });
+    }
+  }, [user, router]);
 
   useEffect(() => {
     fetch("/events.json")
