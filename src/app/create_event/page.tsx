@@ -59,7 +59,6 @@ const CreateEventPage = () => {
       return;
     }
 
-    // Placeholder to satisfy ESLint rule
     console.log("Image selected:", image);
 
     Swal.fire({

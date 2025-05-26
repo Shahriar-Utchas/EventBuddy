@@ -6,13 +6,13 @@
 
 ## 🧠 About the Project
 
-**Event Buddy** is a modern, responsive web application that allows users to browse, book, and manage event seats — and enables admins to create and control events from a custom dashboard. It features role-based access (User/Admin), simulated authentication, and full CRUD functionality using static JSON data.
+**Event Buddy** is a modern, responsive web application that allows users to browse, book, and manage event seats — and enables admins to create and control events from a custom dashboard. It features role-based access (User/Admin), simulated authentication, and full functionality using fake JSON data.
 
 ---
 
 ## 🚀 Key Features
 
-- 🔐 **Simulated Authentication** via localStorage (Admin/User login)
+- 🔐 **Simulated Authentication/Authorization and private routes** via React Context/localStorage (Admin/User login)
 - 🧑‍💼 **Admin Dashboard** to create, edit, delete, and view events
 - 👥 **User Dashboard** to track personal bookings
 - 🎟 **Event Booking System** with seat selection (1–4 seats per user)
@@ -59,7 +59,7 @@
 
 ## 🛠️ Technologies Used
 
-- **Next.js (App Router)**
+- **Next.js**
 - **TypeScript**
 - **Tailwind CSS**
 - **Lucide React Icons**
@@ -73,7 +73,4 @@
 
 - ✅ Dummy user data stored in localStorage
 - 🛡 Protected routes via React context
-- 🧑‍💼 Admin role: `admin@example.com`
-- 👥 User role: any other email
-
 

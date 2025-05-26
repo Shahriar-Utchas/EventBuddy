@@ -26,7 +26,7 @@ export default function User_Dashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (userLoading) return; // Wait until user context is ready
+    if (userLoading) return; 
 
     if (!user) {
       router.push('/signin');

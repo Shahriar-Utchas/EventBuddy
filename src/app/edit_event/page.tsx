@@ -59,7 +59,6 @@ const CreateEventPage = () => {
       return;
     }
 
-    // Prevent unused variable warning for image
     console.log("Selected image file:", image);
 
     Swal.fire({
