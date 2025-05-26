@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Eye, SquarePen, Trash2 } from "lucide-react";
 import Swal from "sweetalert2";
-import { useUser } from "../context/userContext"; // adjust the path as needed
+import { useUser } from "../context/userContext"; 
+import Link from "next/link";
 
 type Event = {
   id: string;
@@ -18,9 +19,12 @@ type Event = {
 export default function AdminDashboard() {
   const [events, setEvents] = useState<Event[]>([]);
   const router = useRouter();
-  const { user } = useUser(); // ⬅️ Access user from context
+  const { user, loading: userLoading } = useUser(); 
 
+  // Auth check
   useEffect(() => {
+    if (userLoading) return; 
+
     if (!user) {
       router.push("/signin");
       return;
@@ -36,8 +40,9 @@ export default function AdminDashboard() {
         router.push("/");
       });
     }
-  }, [user, router]);
+  }, [user, userLoading, router]);
 
+  // Load events
   useEffect(() => {
     fetch("/events.json")
       .then((res) => res.json())
@@ -71,6 +76,10 @@ export default function AdminDashboard() {
     });
   };
 
+  if (userLoading || !user) {
+    return <div className="p-8">Loading...</div>;
+  }
+
   return (
     <div className="min-h-screen bg-[#f9f9ff] px-4 sm:px-6 lg:px-16 py-10 text-[#2c2560]">
       <h1 className="text-2xl sm:text-3xl font-bold mb-1">Admin Dashboard</h1>
@@ -80,9 +89,11 @@ export default function AdminDashboard() {
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
         <h2 className="text-lg font-semibold">Events Management</h2>
-        <button className="w-full sm:w-auto bg-[#5b5efc] text-white px-4 py-2 rounded-md font-medium hover:bg-[#4a4de5] transition">
-          Create Event
-        </button>
+        <Link href="/create_event">
+          <button className="w-full sm:w-auto bg-[#5b5efc] text-white px-4 py-2 rounded-md font-medium hover:bg-[#4a4de5] transition">
+            Create Event
+          </button>
+        </Link>
       </div>
 
       <div className="rounded-xl border border-gray-200 bg-white shadow-sm w-full overflow-x-auto">
@@ -117,11 +128,14 @@ export default function AdminDashboard() {
                 </td>
                 <td className="px-3 py-4">
                   <div className="flex items-center gap-3">
+                    <Link href={`/event/${event.id}`}>
                     <Eye className="w-4 h-4 text-[#666] hover:text-black cursor-pointer" />
+                    </Link>
+                    <Link href={`/edit_event`}>
                     <SquarePen
                       className="w-4 h-4 text-blue-500 hover:text-blue-700 cursor-pointer"
-                      onClick={() => handleEdit(event.id)}
                     />
+                    </Link>
                     <Trash2
                       className="w-4 h-4 text-red-500 hover:text-red-700 cursor-pointer"
                       onClick={() => handleDelete(event.id)}

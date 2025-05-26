@@ -21,11 +21,13 @@ type UserData = {
 
 export default function User_Dashboard() {
   const router = useRouter();
-  const { user } = useUser();
+  const { user, loading: userLoading } = useUser();
   const [userData, setUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (userLoading) return; // Wait until user context is ready
+
     if (!user) {
       router.push('/signin');
       return;
@@ -41,7 +43,7 @@ export default function User_Dashboard() {
         console.error("Failed to load user data:", err);
         setLoading(false);
       });
-  }, [user, router]);
+  }, [user, userLoading, router]);
 
   const handleCancel = (eventId: number, title: string) => {
     Swal.fire({
@@ -71,7 +73,7 @@ export default function User_Dashboard() {
     router.push('/');
   };
 
-  if (loading) return <div className="p-8">Loading...</div>;
+  if (userLoading || loading) return <div className="p-8">Loading...</div>;
   if (!userData) return null;
 
   return (

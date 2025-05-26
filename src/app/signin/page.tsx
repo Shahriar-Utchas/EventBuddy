@@ -34,8 +34,11 @@ export default function Home() {
     );
 
     if (foundUser) {
-      // localStorage.setItem('user', JSON.stringify(foundUser));
-      setUser(foundUser);
+      setUser({
+        name: foundUser.name,
+        email: foundUser.email,
+        role: foundUser.role
+      });
 
       if (foundUser.role === 'admin') {
         router.push('/admin_dashboard');
