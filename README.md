@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎟 Event Buddy – Event Booking Platform (Frontend)
 
-## Getting Started
+## 🌐 Live Site: [Click here](https://event-buddy-by-utchas.vercel.app/)
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🧠 About the Project
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Event Buddy** is a modern, responsive web application that allows users to browse, book, and manage event seats — and enables admins to create and control events from a custom dashboard. It features role-based access (User/Admin), simulated authentication, and full CRUD functionality using static JSON data.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Key Features
 
-## Learn More
+- 🔐 **Simulated Authentication** via localStorage (Admin/User login)
+- 🧑‍💼 **Admin Dashboard** to create, edit, delete, and view events
+- 👥 **User Dashboard** to track personal bookings
+- 🎟 **Event Booking System** with seat selection (1–4 seats per user)
+- 🔄 **Dynamic Event Pages** (past/upcoming split based on date)
+- 💥 **SweetAlert2 Modals** for all feedback (bookings, errors, etc.)
+- 🌗 **Responsive Design** across mobile, tablet, and desktop
+- 📁 **Events.json** used as mock backend (loaded from `/public`)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🖥️ Pages & Functionality
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🏠 Home Page
+- Gradient hero banner with animated SVG stars and tickets
+- Event category cards (Upcoming / Past)
+- Fully responsive search bar and layout
 
-## Deploy on Vercel
+### 📄 Event Details
+- Detailed view with date, time, location, description
+- Dynamic seat booking with real-time availability
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 👤 Sign In / Sign Up
+- Dummy form with role selection (admin/user)
+- State saved in localStorage & context
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🎫 Booking Page (Protected - User Only)
+- Seat selection UI with 1–4 ticket range
+- Auto redirect to sign in if not logged in
+
+### 📂 Admin Dashboard (Protected)
+- View, delete, and link to edit events
+- Responsive table with CRUD controls
+- Create Event page with form validation
+
+### 📝 Edit Event Page (Protected)
+- Pre-filled form with existing event details
+- Ability to update fields or change image
+
+### ➕ Create Event Page (Protected)
+- Admin-only form with category, description, image, etc.
+- Read-only role check with route protection
+
+---
+
+## 🛠️ Technologies Used
+
+- **Next.js (App Router)**
+- **TypeScript**
+- **Tailwind CSS**
+- **Lucide React Icons**
+- **SweetAlert2**
+- **React Context + localStorage**
+- **Figma (UI Prototype)**
+
+---
+
+## 🧪 Simulated Roles & Auth
+
+- ✅ Dummy user data stored in localStorage
+- 🛡 Protected routes via React context
+- 🧑‍💼 Admin role: `admin@example.com`
+- 👥 User role: any other email
+
+
