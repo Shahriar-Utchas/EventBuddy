@@ -1,0 +1,21 @@
+{
+  "name": "Alif",
+  "events": [
+    {
+      "id": 1,
+      "title": "Tech Conference 2025",
+      "date": "APR 14",
+      "day": "Sunday",
+      "time": "3-5 PM",
+      "location": "San Francisco, CA"
+    },
+    {
+      "id": 2,
+      "title": "Tech Conference 2025",
+      "date": "APR 14",
+      "day": "Sunday",
+      "time": "3-5 PM",
+      "location": "San Francisco, CA"
+    }
+  ]
+}
