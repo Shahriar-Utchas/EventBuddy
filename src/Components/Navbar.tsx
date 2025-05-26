@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { LogOut, Menu, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useUser } from "@/app/context/userContext";
@@ -36,16 +37,20 @@ const Navbar = () => {
   return (
     <nav
       className={`px-6 py-4 transition-all duration-300 z-50 ${
-        scrolled ? "fixed top-0 left-0 w-full backdrop-blur bg-white/30 shadow-md" : "relative bg-white"
+        scrolled
+          ? "fixed top-0 left-0 w-full backdrop-blur bg-white/30 shadow-md"
+          : "relative bg-white"
       }`}
     >
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <Link href="/">
           <div className="flex items-center gap-2 cursor-pointer">
-            <img
+            <Image
               src="/images/logo.png"
               alt="logo"
-              className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+              width={40}
+              height={40}
+              className="object-contain"
             />
             <span className="text-xl sm:text-2xl font-semibold text-gray-800 whitespace-nowrap">
               Event buddy.

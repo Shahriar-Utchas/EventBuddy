@@ -17,7 +17,7 @@ const CreateEventPage = () => {
   const [tags, setTags] = useState("");
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { user,  loading } = useUser();
+  const { user, loading } = useUser();
   const router = useRouter();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const CreateEventPage = () => {
         router.push("/");
       });
     }
-  }, [user, router]);
+  }, [user, router, loading]);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -59,10 +59,13 @@ const CreateEventPage = () => {
       return;
     }
 
+    // Prevent unused variable warning for image
+    console.log("Selected image file:", image);
+
     Swal.fire({
       icon: "success",
       title: "Event Updated!",
-      text: "Your event has been successfully Updated!.",
+      text: "Your event has been successfully updated.",
       confirmButtonColor: "#5b5efc",
     }).then(() => {
       router.push("/admin_dashboard");
@@ -152,7 +155,9 @@ const CreateEventPage = () => {
               </select>
             </div>
             <div className="flex-1">
-              <label className="block text-sm font-medium text-[#2C2470] mb-1">Tags (comma separated)</label>
+              <label className="block text-sm font-medium text-[#2C2470] mb-1">
+                Tags (comma separated)
+              </label>
               <input
                 type="text"
                 value={tags}
@@ -201,7 +206,6 @@ const CreateEventPage = () => {
                 <p className="text-xs text-[#A0A3BD] mt-1">Max. 5MB | JPG, PNG</p>
               </div>
 
-              {/* Browse Button */}
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}

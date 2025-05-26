@@ -4,7 +4,9 @@ import { Armchair } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import { useUser } from '../../context/userContext'; 
+import { useUser } from '../../context/userContext';
+import Image from 'next/image';
+
 type Event = {
   id: string;
   title: string;
@@ -26,7 +28,7 @@ type Event = {
 const EventDetails = () => {
   const params = useParams();
   const router = useRouter();
-  const { user } = useUser(); 
+  const { user } = useUser();
 
   const id = params?.id as string;
   const [event, setEvent] = useState<Event | null>(null);
@@ -70,11 +72,15 @@ const EventDetails = () => {
       </button>
 
       {/* Image */}
-      <img
-        src={event.image}
-        alt={event.title}
-        className="rounded-xl w-full h-[350px] object-cover mb-6"
-      />
+      <div className="relative w-full h-[350px] rounded-xl overflow-hidden mb-6">
+        <Image
+          src={event.image}
+          alt={event.title}
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
 
       {/* Tags */}
       <div className="flex gap-2 mb-3">
@@ -124,7 +130,7 @@ const EventDetails = () => {
             <button
               key={seat}
               onClick={() => setSelectedSeats(seat)}
-              className={`w-full py-6 px-4 rounded-md border text-sm font-medium transition text-[#2d2c3c] flex flex-col items-center  ${
+              className={`w-full py-6 px-4 rounded-md border text-sm font-medium transition text-[#2d2c3c] flex flex-col items-center ${
                 selectedSeats === seat
                   ? 'border-[#5c5cde] shadow-sm bg-white'
                   : 'border-[#e0e0f0] hover:border-[#a6a6f5]'

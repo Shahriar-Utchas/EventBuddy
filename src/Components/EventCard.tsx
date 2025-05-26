@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 import { Armchair, CalendarDays, Clock, MapPin } from 'lucide-react';
 
 interface EventProps {
@@ -28,11 +29,14 @@ const EventCard = ({ event }: { event: EventProps }) => {
   return (
     <Link href={`/event/${event.id}`}>
       <div className="bg-white rounded-2xl shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 overflow-hidden cursor-pointer">
-        <img
-          src={event.image}
-          alt={event.title}
-          className="w-full h-48 object-cover"
-        />
+        <div className="w-full h-48 relative">
+          <Image
+            src={event.image}
+            alt={event.title}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
         <div className="p-4">
           <div className="flex items-start gap-4">
             <div className="text-center leading-none">

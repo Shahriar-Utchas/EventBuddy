@@ -1,11 +1,14 @@
+'use client';
+
 import React from 'react';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
     <footer className="bg-[#f5f7ff] py-6">
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center flex-col gap-2 md:flex-row">
         <div className="flex items-center space-x-2 text-[#2a235e] font-bold text-lg">
-            <img src="/images/logo.png" alt="" />
+          <Image src="/images/logo.png" alt="Event buddy logo" width={32} height={32} />
           <span>Event buddy.</span>
         </div>
 
