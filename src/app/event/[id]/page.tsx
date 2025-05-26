@@ -4,8 +4,7 @@ import { Armchair } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import { useUser } from '../../context/userContext'; // ✅ Adjust path if needed
-
+import { useUser } from '../../context/userContext'; 
 type Event = {
   id: string;
   title: string;
@@ -27,7 +26,7 @@ type Event = {
 const EventDetails = () => {
   const params = useParams();
   const router = useRouter();
-  const { user } = useUser(); // ✅ Get user context
+  const { user } = useUser(); 
 
   const id = params?.id as string;
   const [event, setEvent] = useState<Event | null>(null);

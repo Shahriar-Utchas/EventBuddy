@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { LogOut, Menu, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
@@ -8,6 +8,7 @@ import { useUser } from "@/app/context/userContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { user, setUser } = useUser();
   const pathname = usePathname();
   const router = useRouter();
@@ -24,12 +25,28 @@ const Navbar = () => {
 
   const hideAuthButtons = pathname === "/signin" || pathname === "/signup";
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="bg-white shadow-sm px-6 py-4">
+    <nav
+      className={`px-6 py-4 transition-all duration-300 z-50 ${
+        scrolled ? "fixed top-0 left-0 w-full backdrop-blur bg-white/30 shadow-md" : "relative bg-white"
+      }`}
+    >
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <Link href="/">
           <div className="flex items-center gap-2 cursor-pointer">
-            <img src="/images/logo.png" alt="logo" className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+            <img
+              src="/images/logo.png"
+              alt="logo"
+              className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+            />
             <span className="text-xl sm:text-2xl font-semibold text-gray-800 whitespace-nowrap">
               Event buddy.
             </span>
