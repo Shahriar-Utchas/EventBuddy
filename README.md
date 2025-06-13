@@ -1,6 +1,6 @@
-# 🎟 Event Buddy – Event Booking Platform (Frontend)
+# Event Buddy – Event Booking Platform (Frontend)
 
-## 🌐 Live Site: [Click here](https://event-buddy-by-utchas.vercel.app)
+## Live Site: [Click here](https://event-buddy-by-utchas.vercel.app)
 
 
 ## About the Project
@@ -55,7 +55,7 @@
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Next.js**
 - **TypeScript**
@@ -65,7 +65,7 @@
 - **React Context + localStorage**
 - **Figma (UI Prototype)**
 
-## 🧪 Simulated Roles & Auth
+## Simulated Roles & Auth
 Use the following credentials to log in to the application for testing purposes:
 ### User login
 - Email: ```alif@gmail.com```
@@ -76,11 +76,11 @@ Use the following credentials to log in to the application for testing purposes:
   
 ---
 
-## 🧩 How to Install & Run Locally
+## How to Install & Run Locally
 
 Follow these steps to run the project on your local machine:
 
-### 1. Clone the Repository
+1. Clone the Repository
 
 ```sh
 git clone git@github.com:Shahriar-Utchas/EventBuddy.git
